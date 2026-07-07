@@ -1,0 +1,20 @@
+# 个人配置（发布前必须确认已排除）
+config.yaml
+config.yml
+.env
+*.token
+.github_token
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# Playwright browsers
+.browsers/
