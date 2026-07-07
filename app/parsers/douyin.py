@@ -4,7 +4,7 @@
 
 import re
 import requests
-from config import PARSER_API_URL, COOKIES
+from config import DOUYIN_API_URL, COOKIES
 from browser import fetch_page, cookie_str_to_dict
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
@@ -38,7 +38,7 @@ def parse_douyin_video(url):
     if not video_id:
         return {"error": "无法提取视频ID"}
 
-    resp = _req(f"{PARSER_API_URL}/api/douyin/web/fetch_one_video?aweme_id={video_id}")
+    resp = _req(f"{DOUYIN_API_URL}/api/douyin/web/fetch_one_video?aweme_id={video_id}")
     if not resp or resp.status_code != 200:
         return {"error": "抖音API请求失败"}
 
@@ -97,7 +97,7 @@ def parse_douyin_video(url):
 def parse_douyin_user(sec_uid):
     if not sec_uid:
         return {"error": "缺少sec_uid"}
-    resp = _req(f"{PARSER_API_URL}/api/douyin/web/handler_user_profile?sec_user_id={sec_uid}")
+    resp = _req(f"{DOUYIN_API_URL}/api/douyin/web/handler_user_profile?sec_user_id={sec_uid}")
     if not resp or resp.status_code != 200:
         return {"error": "请求用户信息失败"}
     try:

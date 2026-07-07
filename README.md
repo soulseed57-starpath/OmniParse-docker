@@ -75,7 +75,8 @@ uvicorn app.main:app --reload --port 8000
 | 环境变量 | 说明 | 默认值 |
 |---------|------|--------|
 | `PORT` | 服务端口 | `8000` |
-| `PARSER_API_URL` | 内容解析服务 API 地址 | （必填，用户自定义） |
+| `DOUYIN_API_URL` | 抖音 API 地址 | （必填，用户自定义）
+| `BILIBILI_API_URL` | B站 API 地址 | （必填，用户自定义） |
 | `XIANYU_API_URL` | 闲鱼外部解析 API（可选） | 空 |
 
 ## 📦 项目结构

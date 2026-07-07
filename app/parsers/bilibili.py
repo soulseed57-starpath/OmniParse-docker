@@ -4,7 +4,7 @@ B站视频解析模块
 
 import re
 import requests
-from config import PARSER_API_URL
+from config import BILIBILI_API_URL
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 TIMEOUT = 20
@@ -30,7 +30,7 @@ def parse_bilibili_video(url):
         return {"error": "无法提取BV号"}
 
     try:
-        r = requests.get(f"{PARSER_API_URL}/api/bilibili/web/fetch_one_video?bv_id={bv_id}",
+        r = requests.get(f"{BILIBILI_API_URL}/api/bilibili/web/fetch_one_video?bv_id={bv_id}",
                          headers={"User-Agent": UA}, timeout=TIMEOUT)
         data = r.json()
     except Exception as e:
