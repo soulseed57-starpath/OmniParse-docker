@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  omniparse:
+    build: .
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    restart: unless-stopped
