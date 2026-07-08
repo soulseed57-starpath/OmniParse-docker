@@ -40,7 +40,13 @@ def parse_douyin_video(url):
 
     resp = _req(f"{DOUYIN_API_URL}/api/douyin/web/fetch_one_video?aweme_id={video_id}")
     if not resp or resp.status_code != 200:
-        return {"error": "抖音API请求失败"}
+        # API 不可用，走 SSR 降级
+        from .douyin_ssr import extract as ssr_extract
+        ssr_result = ssr_extract(url)
+        if ssr_result.get('success'):
+            return {"data": ssr_result['data'], "source": "ssr_fallback",
+                    "note": "API 不可用，使用 HTML 解析"}
+        return {"error": "抖音API请求失败，SSR解析也未找到数据"}
 
     try:
         data = resp.json()
